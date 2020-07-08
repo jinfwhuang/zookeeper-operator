@@ -36,3 +36,7 @@ resources: {}
   # requests:
   #   cpu: 1
   #   memory: 128Mi
+
+## Enable crd creation
+crd:
+  enabled: true
