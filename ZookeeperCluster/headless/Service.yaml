@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: zk-cluster
+    headless: "true"
+  name: zk-cluster-headless
+spec:
+  clusterIP: None
+  ports:
+  - name: tcp-client
+    port: 2181
+    targetPort: 0
+  - name: tcp-quorum
+    port: 2888
+    targetPort: 0
+  - name: tcp-leader-election
+    port: 3888
+    targetPort: 0
+  - name: tcp-metrics
+    port: 7000
+    targetPort: 0
+  selector:
+    app: zk-cluster
+status:
+  loadBalancer: {}

@@ -171,6 +171,7 @@ func (r *ReconcileZookeeperCluster) reconcileStatefulSet(instance *zookeeperv1be
 	}
 
 	sts := zk.MakeStatefulSet(instance)
+
 	if err = controllerutil.SetControllerReference(instance, sts, r.scheme); err != nil {
 		return err
 	}
@@ -187,6 +188,11 @@ func (r *ReconcileZookeeperCluster) reconcileStatefulSet(instance *zookeeperv1be
 		if err != nil {
 			return err
 		}
+
+		fmt.Println("\n-----fff-creating------")
+		fmt.Println(sts)
+		fmt.Println("-------\n")
+
 		return nil
 	} else if err != nil {
 		return err
@@ -212,12 +218,20 @@ func (r *ReconcileZookeeperCluster) reconcileStatefulSet(instance *zookeeperv1be
 			r.log.Info("Updating Cluster Size.", "New Data:", data, "Version", version)
 			r.zkClient.UpdateNode(path, data, version)
 		}
-		err = r.updateStatefulSet(instance, foundSts, sts)
-		if err != nil {
-			return err
-		}
-		return r.upgradeStatefulSet(instance, foundSts)
+
+		fmt.Println("\n-----ffff-updating------")
+		fmt.Println(sts)
+		fmt.Println("-------\n")
+
+		//err = r.updateStatefulSet(instance, foundSts, sts)
+		//if err != nil {
+		//	return err
+		//}
+		//return r.upgradeStatefulSet(instance, foundSts)
+		return nil
 	}
+
+
 }
 
 func (r *ReconcileZookeeperCluster) updateStatefulSet(instance *zookeeperv1beta1.ZookeeperCluster, foundSts *appsv1.StatefulSet, sts *appsv1.StatefulSet) (err error) {
