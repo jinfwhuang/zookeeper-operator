@@ -15,9 +15,8 @@ WORKDIR /zu
 RUN ./gradlew --console=verbose --info shadowJar
 
 FROM zookeeper:3.6.1
+RUN apt-get -q update && \
+    apt-get install -y dnsutils curl procps
 COPY bin /usr/local/bin
 RUN chmod +x /usr/local/bin/*
 COPY --from=0 /zu/build/libs/zu.jar /root/
-
-RUN apt-get -q update && \
-    apt-get install -y dnsutils curl procps

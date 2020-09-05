@@ -1,0 +1,15 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  creationTimestamp: null
+  name: zk-cluster
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: zk-cluster
+status:
+  currentHealthy: 0
+  desiredHealthy: 0
+  disruptionsAllowed: 0
+  expectedPods: 0
