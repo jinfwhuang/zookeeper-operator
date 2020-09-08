@@ -20,13 +20,13 @@ import (
 )
 
 const (
-	// Default images
-	//DefaultZkContainerRepository = "pravega/zookeeper"
-	//DefaultZkContainerVersion = "0.2.8"
+	// DefaultZkContainerRepository is the default docker repo for the zookeeper
+	// container
+	DefaultZkContainerRepository = "pravega/zookeeper"
 
-	// Image built by Adobe ad-cloud
-	DefaultZkContainerRepository = "cr.k8s.tubemogul.info/jinhuan/zookeeper"
-	DefaultZkContainerVersion = "v0.2.9"
+	// DefaultZkContainerVersion is the default tag used for for the zookeeper
+	// container
+	DefaultZkContainerVersion = "0.2.8"
 
 	// DefaultZkContainerPolicy is the default container pull policy used
 	DefaultZkContainerPolicy = "Always"
